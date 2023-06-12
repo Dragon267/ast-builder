@@ -1,13 +1,15 @@
 mod token;
 mod lexer;
 mod repl;
-//mod ast;
-//mod structures;
+mod ast;
+mod structures;
 
 use repl::repl::init_repl;
 
 use crate::token::token::Token;
 use crate::lexer::lexer::Lexer;
+use crate::ast::ast::build;
+use crate::ast::node::Node;
 
 fn main() {
     init_repl();
@@ -17,4 +19,8 @@ fn main() {
     for i in 0.._tokens.len() {
         println!("{}", _tokens[i].show());
     }
+    let mut _tree = build(_tokens);
+    println!("Child number: {}", _tree._children.len());
+    _tree.output("".to_string());
 }
+

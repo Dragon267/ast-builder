@@ -7,9 +7,9 @@ pub struct Token {
 }
 
 impl Token {
-    // general
     pub const COMPILER: &'static str = "COMPILER";
 
+    // general
     pub const ILLIGAL: &'static str = "ILLIGAL";
     pub const EOF: &'static str = "EOF";
     pub const ROOT: &'static str = "ROOT";
@@ -96,6 +96,13 @@ impl Token {
 
     pub fn get_literal(&self) -> String {
         return format!("{}", self.literal);
+    }
+
+    pub fn clone(&mut self) -> Token {
+        Token::new(
+            self.ttype.clone(),
+            self.literal.clone()
+        )
     }
 }
 

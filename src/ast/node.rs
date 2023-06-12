@@ -24,4 +24,23 @@ impl Node {
     pub fn add_child(&mut self, child: *mut Node) {
         self._children.push(child);
     }
+
+    pub fn get_token(&mut self) -> Token {
+        return self._token.clone();
+    }
+
+    pub fn output(&mut self, path: String) {
+        println!("{}> {}", path, self.get_token().show());
+        for child_ptr in std::mem::take(&mut self._children) {
+            let child = unsafe { &mut *child_ptr };
+            child.output(format!("{}{}", path, "-"));
+        }
+    }
 }
+
+
+
+
+
+
+
