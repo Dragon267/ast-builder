@@ -1,3 +1,4 @@
-# ast-builder
-This project is about building an AST from text.
+# lexer-building-tool 
+
+This is a tool, which helps creating lexers.
 

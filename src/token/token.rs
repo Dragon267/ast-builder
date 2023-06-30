@@ -1,8 +1,8 @@
 use std::collections::HashMap;
 
 pub struct Token {
-    ttype: String,
-    literal: String,
+    pub ttype: String,
+    pub literal: String,
     keywords: HashMap<String, String>,
 }
 
@@ -55,6 +55,29 @@ impl Token {
     pub const ELSE: &'static str = "ELSE";
     pub const RETURN: &'static str = "RETURN";
     pub const CONST: &'static str = "CONST";
+    pub const MAIN: &'static str = "MAIN";
+
+    // Empty
+    pub const EMPTY: &'static str = "";
+
+    pub fn empty() -> Token {
+        let mut _keywords = [
+            ("fn".to_string(), String::from(Token::FUNC)),
+            ("let".to_string(), String::from(Token::LET)),
+            ("true".to_string(), String::from(Token::TRUE)),
+            ("false".to_string(), String::from(Token::FALSE)),
+            ("if".to_string(), String::from(Token::IF)),
+            ("else".to_string(), String::from(Token::ELSE)),
+            ("return".to_string(), String::from(Token::RETURN)),
+            ("const".to_string(), String::from(Token::CONST)),
+            ("main".to_string(), String::from(Token::MAIN)),
+        ].iter().cloned().collect();
+        Token {
+            keywords: _keywords,
+            ttype: Token::EMPTY.to_string(),
+            literal: Token::EMPTY.to_string(),
+        }
+    }
 
     pub fn new(_ttype: String, _literal: String) -> Token {
         let mut _keywords = [
@@ -66,6 +89,7 @@ impl Token {
             ("else".to_string(), String::from(Token::ELSE)),
             ("return".to_string(), String::from(Token::RETURN)),
             ("const".to_string(), String::from(Token::CONST)),
+            ("main".to_string(), String::from(Token::MAIN)),
         ].iter().cloned().collect();
         Token {
             keywords: _keywords,
