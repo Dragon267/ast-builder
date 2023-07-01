@@ -175,6 +175,7 @@ impl Lexer {
                 if Lexer::is_letter_char(self.ch) {
                     let identifier = self.read_identifier();
                     t.rebirth(t.look_up_ident(identifier.clone()).to_string(), identifier);
+                    return t;
                 } else if Lexer::is_digit_char(self.ch) {
                     t.rebirth(Token::INT.to_string(), self.read_number());
                 } else {
