@@ -1,4 +1,4 @@
 # lexer-building-tool 
 
-This is a tool, which helps creating lexers.
+This is a template of a lexer.
 
